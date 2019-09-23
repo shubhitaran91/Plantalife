@@ -73,17 +73,17 @@ return total;
 
 (function(){
   const apiResult = [{
-    title: "Cactus",
+    title: "Purple Lavender",
     value: "200",
-    ing: "img/bg-img/18.jpg"
+    ing: "img/bg-img/purplelavender.jpeg"
   }, {
-    title: "Cactus",
+    title: "Red Dracaena",
     value: "200",
-    ing: "img/bg-img/18.jpg"
+    ing: "img/bg-img/reddracaena.jpeg"
   }, {
-    title: "Cactus",
+    title: "Red Rose",
     value: "200",
-    ing: "img/bg-img/18.jpg"
+    ing: "img/bg-img/redrose.jpeg"
   }];
   
   
