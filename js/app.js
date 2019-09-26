@@ -8,11 +8,11 @@
 })();
 
 (function(){
-    const cartBtn =document.querySelectorAll(".store-item-icon");
+    const cartBtn =indoor();
     cartBtn.forEach(function(btn){
         btn.addEventListener('click',function(event){   
             // console.log(event.target)
-            if(event.target.parentElement.classList.contains("store-item-icon")){
+            if(event.target.parentElement.classList.contains("addCard")){
                 console.log(event.target.parentElement.previousElementSibling.src)
                 let fullPath=event.target.parentElement.previousElementSibling.src;
                 let pos = fullPath.indexOf('img')+3;
@@ -25,7 +25,7 @@
                 let price=event.target.parentElement.parentElement.nextElementSibling.children[0].children[1].textContent;
                 let finalPrice=price.slice(1).trim();
                 item.price=finalPrice;
-console.log(finalPrice);
+                console.log(finalPrice);
                 const cartItem =document.createElement('div');
                 cartItem.classList.add('cart-item','d-flex','justify-content-between','text-capitalize','my-3');
 
@@ -71,51 +71,150 @@ return total;
 })();
 
 
-(function(){
-  const apiResult = [{
-    title: "Purple Lavender",
-    value: "200",
-    ing: "img/bg-img/purplelavender.jpeg"
-  }, {
-    title: "Red Dracaena",
-    value: "200",
-    ing: "img/bg-img/reddracaena.jpeg"
-  }, {
-    title: "Red Rose",
-    value: "200",
-    ing: "img/bg-img/redrose.jpeg"
-  }];
+// (function(){
+//   const apiResult = [{
+//     title: "Cactus",
+//     value: "200",
+//     ing: "img/bg-img/18.jpg"
+//   }, {
+//     title: "Cactus",
+//     value: "200",
+//     ing: "img/bg-img/18.jpg"
+//   }, {
+//     title: "Cactus",
+//     value: "200",
+//     ing: "img/bg-img/18.jpg"
+//   }];
   
   
-  const container = document.getElementById('wow');
+//   const container = document.getElementById('wow');
   
-  apiResult.forEach((result, idx) => {
-    // Create card element
-    const card = document.createElement('section');
-   card.classList.add('col-10','col-sm-6', 'col-lg-4', 'mx-auto', 'my-3','store-item')
+//   apiResult.forEach((result, idx) => {
+//     // Create card element
+//     const card = document.createElement('section');
+//    card.classList.add('col-10','col-sm-6', 'col-lg-4', 'mx-auto', 'my-3','store-item')
   
-    // Construct card content
-    const content = `
-    <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item">
-       <div class ="card">
-    <div class="img-container">
-     <img src=${result.ing} class="card-img-top store-img" alt="">
-    <span class="store-item-icon">
-         <i class="fa fa-shopping-cart"></i>
-    </span>
-    </div>
-    <div class="card-body">
-    <div class="card-text d-flex justify-content-between text-capitalize">
-<h5 id="store-item-name">${result.title}</h5>
-<h5 class="store-item-value">&#8377;<strong id="store-item-price" class="font-weight-bold">${result.value}</strong></h5>
+//     // Construct card content
+//     const content = `
+//     <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item">
+//        <div class ="card">
+//     <div class="img-container">
+//      <img src=${result.ing} class="card-img-top store-img" alt="">
+//     <span class="store-item-icon">
+//          <i class="fa fa-shopping-cart"></i>
+//     </span>
+//     </div>
+//     <div class="card-body">
+//     <div class="card-text d-flex justify-content-between text-capitalize">
+// <h5 id="store-item-name">${result.title}</h5>
+// <h5 class="store-item-value">&#8377;<strong id="store-item-price" class="font-weight-bold">${result.value}</strong></h5>
                           
-</div>
-</div>
-</div>
-</div>
-    `;
+// </div>
+// </div>
+// </div>
+// </div>
+//     `;
   
-    // Append newyly created card element to the container
-    container.innerHTML += content;
-  })
-})();
+//     // Append newyly created card element to the container
+//     container.innerHTML += content;
+//   })
+// })();
+function indoor(){
+$(document).ready(function(){
+   
+    var div = $('#addCard');
+    var data = apiDemo();
+    for(var i=0; i < data.length; i++) {
+      var div = document.createElement("DIV");
+      div.className = "col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item"
+      var cardDiv = document.createElement("DIV");
+      cardDiv.className = "card";
+      div.append(cardDiv);
+      var imgContainer = document.createElement("DIV");
+      imgContainer.className = "img-container";
+      cardDiv.append(imgContainer);
+      var cardBody = document.createElement("DIV");
+      cardBody.className = "card-body";
+      cardDiv.append(cardBody);
+      var cardText = document.createElement("DIV");
+      cardText.className = "card-text d-flex justify-content-between text-capitalize"
+      cardBody.append(cardText);
+      var plantImg = document.createElement("IMG");
+      plantImg.className = "card-img-top store-img"
+      plantImg.src = "img/bg-img/18.jpg"
+      imgContainer.append(plantImg);
+      var span = document.createElement("span");
+      span.className = "store-item-icon"
+      imgContainer.append(span);
+      var italic = document.createElement("i");
+      italic.className = "fa fa-shopping-cart"
+      span.append(italic);
+      var plantName = document.createElement("h5");
+      plantName.innerText = "cactus";
+      cardText.append(plantName);
+      var sign = document.createElement("h5");
+      sign.className = "store-item-value"
+      sign.innerText = "\u20B9";
+      var price = document.createElement("strong");
+      price.className = "font-weight-bold"
+      price.innerText = "5";
+      sign.append(price);
+      cardText.append(sign);
+
+      $('#addCard').append(div);
+    }
+  
+    
+function apiDemo(){
+    const apiResult = [{
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    }, {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    }, {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },  {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },  {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },  {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },
+    {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },
+    {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },
+    {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },
+    {
+      title: "Cactus",
+      value: "200",
+      img: "img/bg-img/18.jpg"
+    },
+  ];
+  return apiResult;
+}
+
+});
+
+}
