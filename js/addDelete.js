@@ -26,7 +26,7 @@ $("#btnSubmit").click(function (event) {
 })
 
 $(document).ready(function () {
-    $('#dataTable').DataTable({});
+    // $('#dataTable').DataTable({});
     var row = "";
     $.ajax({
         url: "http://localhost:5000/getPlantData",
@@ -50,6 +50,6 @@ $(document).ready(function () {
     });
 })
 
-// function anotherPage(){
-//     window.location.href='/listofplants.html';
-// }
+function anotherPage(){
+    window.location.href='/listofplants.html';
+}
