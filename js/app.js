@@ -152,6 +152,11 @@ $(document).ready(function(){
       var plantName = document.createElement("h5");
       plantName.innerText = "cactus";
       cardText.append(plantName);
+      var addButton = document.createElement("BUTTON");
+      addButton.className = "btn btn-default btn-sm"
+      addButton.innerText = "Add to cart";
+      addButton.addEventListener("click", addToCart);
+      cardText.append(addButton);
       var sign = document.createElement("h5");
       sign.className = "store-item-value"
       sign.innerText = "\u20B9";
@@ -163,7 +168,14 @@ $(document).ready(function(){
 
       $('#addCard').append(div);
     }
-  
+
+    function addToCart(){
+      var item_count = $("#item-count").text();
+      item_count = parseInt(item_count);
+      $("#item-count").text(item_count+1);
+      console.log(item_count);
+    }
+    
     
 function apiDemo(){
     const apiResult = [{
