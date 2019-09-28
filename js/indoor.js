@@ -87,6 +87,7 @@ $(document).ready(function(){
           console.log("plant data",data);
          
     for(var i=0; i < data.message.length; i++) {
+      if(data.message[i].plant_type=='Indoor'){
 console.log(data.message.length)
       var div = document.createElement("DIV");
       div.className = "col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item"
@@ -132,6 +133,7 @@ console.log(data.message.length)
       cardText.append(sign);
 
       $('#addCard').append(div);
+      }
     }
   }
   })
