@@ -10,8 +10,8 @@ $("#btnSubmit").click(function (event) {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        // url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
-        url: "http://localhost:5000/uploadPlantData",
+        url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
+        // url: "http://localhost:5000/uploadPlantData",
         data: data,
         processData: false,
         contentType: false,
