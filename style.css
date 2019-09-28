@@ -20,7 +20,7 @@ Version: - v1.0
 /* :: 3.0 Base CSS */
 
 :root {
-  --mainPink: #ef7998;
+  /* --mainPink: #ef7998; */
   --mainYellow: rgb(249, 228, 148);
   --mainWhite: #fff;
   --mainBlack: #000;
@@ -337,7 +337,7 @@ img {
       height: 41px; }
       .header-area .top-header-area .top-header-content .top-header-meta a {
         display: inline-block;
-        font-size: 12px;
+        font-size: 17px;
         font-weight: 400;
         color: #ffffff;
         line-height: 1; }
