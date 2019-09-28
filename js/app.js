@@ -79,7 +79,7 @@ $(document).ready(function(){
     var div = $('#addCard');
     // var data = apiDemo();
     $.ajax({
-      url: "http://localhost:5000/getPlantData",
+      url: "https://plantalife-backend.herokuapp.com/getPlantData",
       type: "GET",
       datatype: "json",
       data: {},
@@ -104,7 +104,7 @@ console.log(data.message.length)
       cardBody.append(cardText);
       var plantImg = document.createElement("IMG");
       plantImg.className = "card-img-top store-img"
-      plantImg.src = `http://localhost:5000/${data.message[i].plant_photo}`
+      plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
       imgContainer.append(plantImg);
       var span = document.createElement("span");
       span.className = "store-item-icon"
