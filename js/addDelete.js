@@ -16,8 +16,8 @@ $("#btnSubmit").click(function (event) {
         contentType: false,
         cache: false,
         success: function (data) {
-             alert(data.message);
-            // swal.fire(data.message)
+            //  alert(data.message);
+             swal(data.message)
             location.reload();
             window.location.href='/listofplants.html';
         },
