@@ -10,13 +10,14 @@ $("#btnSubmit").click(function (event) {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://localhost:5000/uploadPlantData",
+        url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
         data: data,
         processData: false,
         contentType: false,
         cache: false,
         success: function (data) {
-            alert(data.message);
+            // alert(data.message);
+            swal(data.message)
             location.reload();
             window.location.href='/listofplants.html';
         },
@@ -30,7 +31,7 @@ $(document).ready(function () {
     var row = "";
     $('#dataTable').DataTable({
         "ajax":{
-            "url": "http://localhost:5000/getPlantData",
+            "url": "https://plantalife-backend.herokuapp.com/getPlantData",
             "type": "GET",
             "datatype": "json",
             "data": {},
