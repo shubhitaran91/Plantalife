@@ -18,6 +18,7 @@ $("#btnSubmit").click(function (event) {
         success: function (data) {
             alert(data.message);
             location.reload();
+            window.location.href='/listofplants.html';
         },
         error: function (e) {
             console.log("ERROR : ", e);
@@ -50,6 +51,6 @@ $(document).ready(function () {
     });
 })
 
-function anotherPage(){
-    window.location.href='/listofplants.html';
-}
+// document.getElementById("myButton").onclick = function () {
+//     location.href = "listofplants.html";
+// };
