@@ -11,14 +11,14 @@ $("#btnSubmit").click(function (event) {
         type: "POST",
         enctype: 'multipart/form-data',
         url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
-        // url: "http://localhost:5000/uploadPlantData",
+       
         data: data,
         processData: false,
         contentType: false,
         cache: false,
         success: function (data) {
              alert(data.message);
-            //  swal(data.message)
+           
             location.reload();
             window.location.href='/listofplants.html';
         },
