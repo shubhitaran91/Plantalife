@@ -1,79 +1,79 @@
-(function(){
-    const cartInfo = document.getElementById('cart-info');
-    const cart = document.getElementById('cart');
+// (function(){
+//     const cartInfo = document.getElementById('cart-info');
+//     const cart = document.getElementById('cart');
 
-    cartInfo.addEventListener('click',function(){
-        cart.classList.toggle('show-cart')
-    })
-})();
+//     // cartInfo.addEventListener('click',function(){
+//     //     cart.classList.toggle('show-cart')
+//     // })
+// })();
 
-(function(){
-    const cartBtn =indoor();
-    // cartBtn.forEach(function(btn){
-      cartBtn.addEventListener('click',function(event){   
-            // console.log(event.target)
-            if(event.target.parentElement.classList.contains("store-item-icon")){
-                console.log(event.target.parentElement.previousElementSibling.src)
-                let fullPath=event.target.parentElement.previousElementSibling.src;
-                let pos = fullPath.indexOf('img')+3;
-                let partPath=fullPath.slice(pos);
-                console.log(partPath)
-                const item={};
-                item.img=`img-cart${partPath}`;
-                let name=event.target.parentElement.parentElement.nextElementSibling.children[0].children[0].textContent;
-                item.name=name;
-                let price=event.target.parentElement.parentElement.nextElementSibling.children[0].children[1].textContent;
-                let finalPrice=price.slice(1).trim();
-                item.price=finalPrice;
-                console.log(finalPrice);
-                const cartItem =document.createElement('div');
-                cartItem.classList.add('cart-item','d-flex','justify-content-between','text-capitalize','my-3');
+// (function(){
+//     const cartBtn = indoor();
+//     // cartBtn.forEach(function(btn){
+//       cartBtn.addEventListener('click',function(event){   
+//             // console.log(event.target)
+//             if(event.target.parentElement.classList.contains("store-item-icon")){
+//                 console.log(event.target.parentElement.previousElementSibling.src)
+//                 let fullPath=event.target.parentElement.previousElementSibling.src;
+//                 let pos = fullPath.indexOf('img')+3;
+//                 let partPath=fullPath.slice(pos);
+//                 console.log(partPath)
+//                 const item={};
+//                 item.img=`img-cart${partPath}`;
+//                 let name=event.target.parentElement.parentElement.nextElementSibling.children[0].children[0].textContent;
+//                 item.name=name;
+//                 let price=event.target.parentElement.parentElement.nextElementSibling.children[0].children[1].textContent;
+//                 let finalPrice=price.slice(1).trim();
+//                 item.price=finalPrice;
+//                 console.log(finalPrice);
+//                 const cartItem =document.createElement('div');
+//                 cartItem.classList.add('cart-item','d-flex','justify-content-between','text-capitalize','my-3');
 
-                cartItem.innerHTML=`
-                <img src="${item.img}" class="img-fluid rounded-circle" id="item-img" alt="">
-            <div class="item-text">
+//                 cartItem.innerHTML=`
+//                 <img src="${item.img}" class="img-fluid rounded-circle" id="item-img" alt="">
+//             <div class="item-text">
 
-              <p id="cart-item-title" class="font-weight-bold mb-0">${item.name}</p>
-              <span>&#8377;</span>
-              <span id="cart-item-price" class="cart-item-price" class="mb-0">${item.price}</span>
-            </div>
-            <a href="#" id='cart-item-remove' class="cart-item-remove">
-              <i class="fa fa-trash"></i>
-            </a>
-          </div>`
+//               <p id="cart-item-title" class="font-weight-bold mb-0">${item.name}</p>
+//               <span>&#8377;</span>
+//               <span id="cart-item-price" class="cart-item-price" class="mb-0">${item.price}</span>
+//             </div>
+//             <a href="#" id='cart-item-remove' class="cart-item-remove">
+//               <i class="fa fa-trash"></i>
+//             </a>
+//           </div>`
 
-          const cart=document.getElementById('cart');
-          const total =document.querySelector('.cart-total-container');
-          cart.insertBefore(cartItem,total);
-          alert('item added to the cart');
-          showTotals()
-             }
-      //  })
-    })
+//           const cart=document.getElementById('cart');
+//           const total =document.querySelector('.cart-total-container');
+//           cart.insertBefore(cartItem,total);
+//           alert('item added to the cart');
+//           showTotals()
+//              }
+//       //  })
+//     })
 
-    function showTotals(){
-        const total=[];
-        const items=document.querySelectorAll('.cart-item-price');
+//     function showTotals(){
+//         const total=[];
+//         const items=document.querySelectorAll('.cart-item-price');
 
-        items.forEach(function(item){
-            total.push(parseFloat(item.textContent))
-        })
+//         items.forEach(function(item){
+//             total.push(parseFloat(item.textContent))
+//         })
 
-        const totalMoney=total.reduce(function(total,item){
-            total+=item;
-return total;
-        },0);
-        const finalMoney = totalMoney.toFixed(2);
-        document.getElementById('cart-total').textContent=finalMoney
-        document.querySelector('.item-total').textContent=finalMoney
-        document.getElementById('item-count').textContent=total.length
-    }
-})();
-
-
+//         const totalMoney=total.reduce(function(total,item){
+//             total+=item;
+// return total;
+//         },0);
+//         const finalMoney = totalMoney.toFixed(2);
+//         document.getElementById('cart-total').textContent=finalMoney
+//         document.querySelector('.item-total').textContent=finalMoney
+//         document.getElementById('item-count').textContent=total.length
+//     }
+// })();
 
 
-function indoor(){
+
+
+
 $(document).ready(function(){
    
     var div = $('#addCard');
@@ -105,6 +105,7 @@ console.log(data.message.length)
       cardBody.append(cardText);
       var plantImg = document.createElement("IMG");
       plantImg.className = "card-img-top store-img"
+    //   plantImg.src = "img/bg-img/1.jpeg"
       plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
       imgContainer.append(plantImg);
       var span = document.createElement("span");
@@ -118,11 +119,11 @@ console.log(data.message.length)
       plantName.innerText = `${data.message[i].plant_name}`;
       
       cardText.append(plantName);
-      // var addButton = document.createElement("BUTTON");
-      // addButton.className = "btn btn-default btn-sm"
-      // addButton.innerText = "Add to cart";
-      // addButton.addEventListener("click", addToCart);
-      // cardText.append(addButton);
+      var addButton = document.createElement("BUTTON");
+      addButton.className = "btn btn-primary btn-sm"
+      addButton.innerText = "Add to Cart";
+      addButton.addEventListener("click", addToCart);
+      cardBody.append(addButton);
       var sign = document.createElement("h5");
       sign.className = "store-item-value"
       sign.innerText = "\u20B9";
@@ -133,29 +134,32 @@ console.log(data.message.length)
       cardText.append(sign);
 
       $('#addCard').append(div);
+
       }
     }
+    return 
   }
   })
-    function addToCart(){
+
+    var purchaseItem = [];
+    function addToCart(event){
+     let plantName = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[0].innerText;
+     let plantPrice = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[1].innerText;
+     let jsonObj = {
+        plantName,
+        plantPrice
+     }
+     console.log(plantName,plantPrice);
       var item_count = $("#item-count").text();
       item_count = parseInt(item_count);
       $("#item-count").text(item_count+1);
       console.log(item_count);
+      purchaseItem.push(jsonObj);
+      console.log(purchaseItem);
+      sessionStorage.setItem('myArray', JSON.stringify(purchaseItem));
     }
     
-    
-function apiDemo(){
-  
-    var row = "";
-    
-      
-   
-    
-    
-}
-
 
 });
 
-}
+
