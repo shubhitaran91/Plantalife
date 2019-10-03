@@ -107,6 +107,7 @@ console.log(data.message.length)
       plantImg.className = "card-img-top store-img"
     //   plantImg.src = "img/bg-img/1.jpeg"
       plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
+      plantImg.addEventListener("click",clickonImg);
       imgContainer.append(plantImg);
       var span = document.createElement("span");
       span.className = "store-item-icon"
@@ -157,8 +158,13 @@ console.log(data.message.length)
       purchaseItem.push(jsonObj);
       console.log(purchaseItem);
       sessionStorage.setItem('myArray', JSON.stringify(purchaseItem));
+      
     }
     
+
+    function clickonImg(){
+      window.location.href='./shop-details.html'
+    }
 
 });
 
