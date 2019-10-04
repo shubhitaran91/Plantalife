@@ -1,7 +1,9 @@
 
 $(document).ready(function () {
+
     var myArray = JSON.parse(sessionStorage.getItem('myArray'));
     console.log("myArray",myArray)
+    
     summary();
 
     function summary(){
@@ -29,5 +31,29 @@ $(document).ready(function () {
         $('#shipping').text('\u20B9'+shippingCharges+'.00');
         let totalCharges = totalPrice + shippingCharges
         $('#total').text('\u20B9'+totalCharges+'.00')
+
+        $('#placeOrder').click(function(){
+            placeOrder(totalCharges);
+        })
     }
+
+    function placeOrder(totalCharges){
+
+        var dataTosend = {
+         fname : $('#first_name').val(),
+         lname : $('#last_name').val(),
+         emailId : $('#email_address').val(),
+         phone : $('#phone_number').val(),
+         address : $('#address').val(),
+         city : $('#city').val(),
+         state : $('#state').val(),
+         zip : $('#postcode').val(),
+         notes : $('#order_notes').val(),
+         plantInfo : myArray,
+         totalAmt : totalCharges,
+        }
+
+        console.log(dataTosend);
+    }
+
 });
