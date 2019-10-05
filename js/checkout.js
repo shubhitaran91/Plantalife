@@ -5,7 +5,7 @@ $(document).ready(function () {
     console.log("myArray",myArray)
     
     summary();
-
+    
     function summary(){
         var totalPrice = 0;
         for(let i = 0; i < myArray.length; i++){
@@ -34,7 +34,11 @@ $(document).ready(function () {
 
         $('#placeOrder').click(function(){
             placeOrder(totalCharges);
+            alert("Order has been placed...... Please Contact Person given in a mail")
+        
         })
+
+       
     }
 
     function placeOrder(totalCharges){
@@ -54,6 +58,9 @@ $(document).ready(function () {
         }
 
         console.log(dataTosend);
+
     }
+
+  
 
 });
