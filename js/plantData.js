@@ -86,13 +86,15 @@ $(document).ready(function () {
       data: {},
       success: function (data) {
         console.log("plant data", data);
+        sessionStorage.plantData = JSON.stringify(data.message);
         createImages(data);
       }
     })
   }
 
-  var purchaseItem = [];
+  
   function addToCart(event) {
+    var purchaseItem = [];
     let plantName = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[0].innerText;
     let plantPrice = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[1].innerText;
     let jsonObj = {
@@ -170,8 +172,18 @@ $(document).ready(function () {
   }
 
 
-  function clickonImg() {
-    window.location.href = './shop-details.html'
+  function clickonImg(event) {
+    let plantName = event.path[2].children[1].children[0].children[0].innerText;
+    plantName = plantName.toLowerCase().trim();
+    var plantData = JSON.parse( sessionStorage.plantData );
+    for(let i = 0; i < plantData.length; i++){
+      str = plantData[i].plant_name.toLowerCase().trim();
+      if(str == plantName){
+        // console.log(plantData[i]);
+        window.location.href = './shop-details.html?plant_id='+plantData[i].plant_no;
+      }
+    }
+    
   }
 
 });
