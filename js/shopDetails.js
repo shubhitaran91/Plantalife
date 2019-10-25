@@ -19,8 +19,7 @@ $(document).ready(function () {
             console.log(plantData[i]);
             $('#plantName').text(plantData[i].plant_name);
             $('#plantPrice').text("\u20B9"+" "+plantData[i].plant_price);
-            $('#desc').text('xyz');
-            $('#moreDesc').text('xyz');
+            // $('#moreDesc').text('xyz');
             relatedProducts(plantData);
         }
     }

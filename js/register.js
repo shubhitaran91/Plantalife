@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
     $('#signUp').click(function(e){
-
         e.preventDefault();
         $('#loginModal').hide();
         $('#signUpModal').show();
