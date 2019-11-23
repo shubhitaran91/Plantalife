@@ -10,7 +10,7 @@
 // (function(){
 //     const cartBtn = indoor();
 //     // cartBtn.forEach(function(btn){
-//       cartBtn.addEventListener('click',function(event){   
+//       cartBtn.addEventListener('click',function(event){
 //             // console.log(event.target)
 //             if(event.target.parentElement.classList.contains("store-item-icon")){
 //                 console.log(event.target.parentElement.previousElementSibling.src)
@@ -70,12 +70,7 @@
 //     }
 // })();
 
-
-
-
-
-$(document).ready(function () {
-
+$(document).ready(function() {
   getData();
 
   function getData() {
@@ -84,23 +79,26 @@ $(document).ready(function () {
       type: "GET",
       datatype: "json",
       data: {},
-      success: function (data) {
+      success: function(data) {
         console.log("plant data", data);
-        sessionStorage.plantData = JSON.stringify(data.message);
+        localStorage.plantData = JSON.stringify(data.message);
         createImages(data);
       }
-    })
+    });
   }
 
-  
   function addToCart(event) {
     var purchaseItem = [];
-    let plantName = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[0].innerText;
-    let plantPrice = event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[1].innerText;
+    let plantName =
+      event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[0]
+        .innerText;
+    let plantPrice =
+      event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[1]
+        .innerText;
     let jsonObj = {
       plantName,
       plantPrice
-    }
+    };
     console.log(plantName, plantPrice);
     var item_count = $("#item-count").text();
     item_count = parseInt(item_count);
@@ -108,7 +106,8 @@ $(document).ready(function () {
     console.log(item_count);
     purchaseItem.push(jsonObj);
     console.log(purchaseItem);
-    sessionStorage.setItem('myArray', JSON.stringify(purchaseItem));
+    sessionStorage.setItem("myPlant", JSON.stringify(purchaseItem));
+    sessionStorage.setItem("itemCount", item_count);
   }
 
   function createImages(data) {
@@ -119,9 +118,10 @@ $(document).ready(function () {
       type = type.toLowerCase();
       type = type.charAt(0);
       if (type == page.charAt(0)) {
-        console.log(data.message.length)
+        console.log(data.message.length);
         var div = document.createElement("DIV");
-        div.className = "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item"
+        div.className =
+          "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item";
         var cardDiv = document.createElement("DIV");
         cardDiv.className = "card";
         div.append(cardDiv);
@@ -132,19 +132,20 @@ $(document).ready(function () {
         cardBody.className = "card-body";
         cardDiv.append(cardBody);
         var cardText = document.createElement("DIV");
-        cardText.className = "card-text d-flex justify-content-between text-capitalize"
+        cardText.className =
+          "card-text d-flex justify-content-between text-capitalize";
         cardBody.append(cardText);
         var plantImg = document.createElement("IMG");
-        plantImg.className = "card-img-top store-img"
-        plantImg.src = "img/bg-img/1.jpeg"
+        plantImg.className = "card-img-top store-img";
+        plantImg.src = "img/bg-img/1.jpeg";
         // plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
         plantImg.addEventListener("click", clickonImg);
         imgContainer.append(plantImg);
         var span = document.createElement("span");
-        span.className = "store-item-icon"
+        span.className = "store-item-icon";
         imgContainer.append(span);
         var italic = document.createElement("i");
-        italic.className = "fa fa-shopping-cart"
+        italic.className = "fa fa-shopping-cart";
         // italic.addEventListener("click", addToCart);
         span.append(italic);
         var plantName = document.createElement("h5");
@@ -152,40 +153,35 @@ $(document).ready(function () {
 
         cardText.append(plantName);
         var addButton = document.createElement("BUTTON");
-        addButton.className = "btn btn-primary btn-sm"
+        addButton.className = "btn btn-primary btn-sm";
         addButton.innerText = "Add to Cart";
         addButton.addEventListener("click", addToCart);
         cardBody.append(addButton);
         var sign = document.createElement("h5");
-        sign.className = "store-item-value"
+        sign.className = "store-item-value";
         sign.innerText = "\u20B9";
         var price = document.createElement("strong");
-        price.className = "font-weight-bold"
+        price.className = "font-weight-bold";
         price.innerText = `${data.message[i].plant_price}`;
         sign.append(price);
         cardText.append(sign);
 
-        $('#addCard').append(div);
-
+        $("#addCard").append(div);
       }
     }
   }
-
 
   function clickonImg(event) {
     let plantName = event.path[2].children[1].children[0].children[0].innerText;
     plantName = plantName.toLowerCase().trim();
-    var plantData = JSON.parse( sessionStorage.plantData );
-    for(let i = 0; i < plantData.length; i++){
+    var plantData = JSON.parse(sessionStorage.plantData);
+    for (let i = 0; i < plantData.length; i++) {
       str = plantData[i].plant_name.toLowerCase().trim();
-      if(str == plantName){
+      if (str == plantName) {
         // console.log(plantData[i]);
-        window.location.href = './shop-details.html?plant_id='+plantData[i].plant_no;
+        window.location.href =
+          "./shop-details.html?plant_id=" + plantData[i].plant_no;
       }
     }
-    
   }
-
 });
-
-
