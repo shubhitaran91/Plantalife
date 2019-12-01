@@ -137,7 +137,7 @@ $(document).ready(function() {
         cardBody.append(cardText);
         var plantImg = document.createElement("IMG");
         plantImg.className = "card-img-top store-img";
-        plantImg.src = "img/bg-img/1.jpeg";
+        plantImg.src = `data:image/*;base64,${data.message[i].plant_photo}`;
         // plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
         plantImg.addEventListener("click", clickonImg);
         imgContainer.append(plantImg);
