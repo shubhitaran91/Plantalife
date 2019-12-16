@@ -5,6 +5,12 @@ $("#btnSubmit").click(function(event) {
 
   var data = new FormData(form);
 
+  $('#fileUploadForm')[0].reset();
+
+  $('#loading').css({'position': 'fixed'})
+
+  
+
   $.ajax({
     type: "POST",
     enctype: "multipart/form-data",
@@ -17,11 +23,12 @@ $("#btnSubmit").click(function(event) {
     success: function(data) {
       alert(data.message);
 
-      location.reload();
-      window.location.href = "/listofplants.html";
+      //location.reload();
+      // window.location.href = "/listofplants.html";
     },
     error: function(e) {
       console.log("ERROR : ", e);
+      $('#loading').css({'position': ''})
     }
   });
 });
