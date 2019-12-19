@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-    var myArray = JSON.parse(sessionStorage.getItem('myArray'));
+    var myArray = JSON.parse(sessionStorage.getItem('myPlant'));
     console.log("myArray",myArray)
     
     summary();
@@ -21,7 +21,7 @@ $(document).ready(function () {
             prodDiv.append(plantPrice);
             $('#summary').append(prodDiv);
             var purchasePrice = myArray[i].plantPrice;
-            purchasePrice = purchasePrice.slice(1, 4);
+            purchasePrice = purchasePrice.substring(1);
             purchasePrice = parseInt(purchasePrice);
             totalPrice += purchasePrice;
         }
