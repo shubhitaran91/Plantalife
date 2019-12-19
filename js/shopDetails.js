@@ -10,11 +10,11 @@ $(document).ready(function () {
         data[tmp[0]] = tmp[1];
    }
     console.log(data);
-    var itemCount = JSON.parse(sessionStorage.getItem('itemCount'));
-    if(itemCount == null){
-        itemCount = 0; 
-    }
-    $('#item-count').text(itemCount);
+    var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
+    if(myPlant == null){
+    myPlant.length = 0;
+   }
+   $("#item-count").text(myPlant.length);
     var plantData = JSON.parse(localStorage.getItem('plantData'));
     console.log(plantData);
     relatedProducts(plantData);
@@ -65,8 +65,13 @@ $(document).ready(function () {
 
     var addToCart = []
     $("#addToCart").click(function(event) {
-        let itemCount = JSON.parse(sessionStorage.getItem('itemCount'));
-        let plantData = JSON.parse(sessionStorage.getItem('myPlant'));
+        // itemCount = itemCount + 1;
+        $('#item-count').text(itemCount);
+        // let plantData = JSON.parse(sessionStorage.getItem('myPlant'));
+        
+        if(myPlant != null){
+            addToCart = myPlant;
+        }
         let plantName = $('#plantName').text();
         let plantPrice = $('#plantPrice').text();
         let jsonObj = {
@@ -74,15 +79,8 @@ $(document).ready(function () {
             plantPrice
           };
           addToCart.push(jsonObj);
-        
-        // if((itemCount && plantData) == null || (itemCount && plantData) == undefined){
-
-        // }
-        // itemCount = itemCount.parseInt(itemCount);
-        // itemCount = itemCount + 1;
-        // $('#item-count').text(itemCount);
-        
-        
+          $("#item-count").text(addToCart.length);
+        sessionStorage.setItem("myPlant", JSON.stringify(addToCart));
     })
 
 

@@ -1,8 +1,8 @@
 
 $(document).ready(function () {
   
-  var myArray = JSON.parse(sessionStorage.getItem('myArray'));
-  console.log("myArray",myArray)
+  var myArray = JSON.parse(sessionStorage.getItem('myPlant'));
+  // var plantData = JSON.parse(localStorage.getItem('plantData'));
   
   summary();
 
@@ -10,26 +10,21 @@ $(document).ready(function () {
       var totalPrice = 0;
       var row = "";
       for(let i = 0; i < myArray.length; i++){
-       
-        row += "<tr>\
-        <td class='cart_product_img'><a href=''><img src='img/bg-img/Whitelily.jpeg' alt='Product'></a>" + myArray[i].plantName + "</td>"
-         +  "<td class='qty'><div class='quantity'><span class='qty-minus'\
-          onclick='var effect = document.getElementById('qty'); \
-          var qty = effect.value; if( !isNaN( qty ) &amp; &amp; qty &gt; 1 )\
-           effect.value--;return false;'><i class='fa fa-minus' aria-hidden='true'></i></span>\
-           <input type='number' class='qty-text' id='qty' step='1' min='1' max='99' name='quantity' value='1'> \
-           <span class='qty-plus' onclick='var effect = document.getElementById('qty');\
-            var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;'>\
-            <i class='fa fa-plus' aria-hidden='true'></i></span> </div></td>"+ "<td class='price'><span>" + myArray[i].plantPrice + "</td>"+
-            "<td class='action'><a href='#'><i class='icon_close'></i></a></td></tr>";
+
+        row += `<tr>
+        <td>${myArray[i].plantName}</td>
+        <td class='price'>${myArray[i].plantPrice}</td>
+        <td class='action'><a><i class='icon_close'></i></a></td>
+        </tr>`;
          
         var purchasePrice = myArray[i].plantPrice;
-          purchasePrice = purchasePrice.slice(1, 4);
+          purchasePrice = purchasePrice.substring(1);
           purchasePrice = parseInt(purchasePrice);
           totalPrice += purchasePrice;
       }
       $("#tbDetails").append(row);
       console.log(totalPrice);
+      
       $('#subtotal').text('\u20B9'+totalPrice+'.00');
       let shippingCharges = 10;
       $('#shipping').text('\u20B9'+shippingCharges+'.00');
@@ -41,6 +36,16 @@ $(document).ready(function () {
       })
   }
 
-  
+//   $(".action").on("click", function(event){
+//     // let tbrow = $(document).find('tr');
+//     // console.log($(event.currentTarget).index() + 1);
+//     console.log($(this).index());
+//     // $(this).closest("tr").remove();
+//     // parentNode.rowIndex
+// });
+
+// $('#tbDetails').find('tr').click( function(){
+//   console.log('You clicked row '+ ($(this).index()+1) );
+//   })
 
 });

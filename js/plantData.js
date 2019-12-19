@@ -84,7 +84,11 @@ $(document).ready(function() {
     createImages(plantData);
    }
 
-   
+   var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
+   if(myPlant == null){
+    myPlant.length = 0;
+   }
+   $("#item-count").text(myPlant.length);
 
   function getData() {
     $.ajax({
@@ -111,15 +115,16 @@ $(document).ready(function() {
       plantPrice
     };
     console.log(plantName, plantPrice);
-    var item_count = $("#item-count").text();
-    item_count = parseInt(item_count);
-    item_count = item_count + 1;
-    $("#item-count").text(item_count);
-    console.log(item_count);
+    // var item_count = $("#item-count").text();
+    // item_count = parseInt(item_count);
+    // item_count = item_count + 1;
+    
+    // console.log(item_count);
     purchaseItem.push(jsonObj);
-    console.log(purchaseItem);
+    $("#item-count").text(purchaseItem.length);
+    //console.log(purchaseItem);
     sessionStorage.setItem("myPlant", JSON.stringify(purchaseItem));
-    sessionStorage.setItem("itemCount", item_count);
+    // sessionStorage.setItem("itemCount", item_count);
   }
 
   function createImages(data) {
