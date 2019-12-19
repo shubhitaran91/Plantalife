@@ -92,7 +92,7 @@ $(document).ready(function() {
 
   function getData() {
     $.ajax({
-      url: "http://localhost:5000/getPlantData",
+      url: "https://plantalife-backend.herokuapp.com/getPlantData",
       type: "GET",
       datatype: "json",
       data: {},
