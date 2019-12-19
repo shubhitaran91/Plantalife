@@ -100,6 +100,8 @@ $(document).ready(function() {
         $('#loading').css({'position': ''})
       }
     });
+
+   
   }
 
   var purchaseItem = [];
@@ -137,7 +139,7 @@ $(document).ready(function() {
         div.className =
           "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item";
         var cardDiv = document.createElement("DIV");
-        cardDiv.className = "card";
+        cardDiv.className = "card card-image";
         div.append(cardDiv);
         var imgContainer = document.createElement("DIV");
         imgContainer.className = "img-container";
@@ -198,4 +200,11 @@ $(document).ready(function() {
       }
     }
   }
+
+
+//  nextPage()
 });
+
+
+
+

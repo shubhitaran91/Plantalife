@@ -1566,7 +1566,8 @@ img {
 .single-benefits-area {
   position: relative;
   z-index: 1;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  text-align: center; }
   .single-benefits-area img {
     margin-bottom: 30px; }
   .single-benefits-area p {
@@ -2951,6 +2952,15 @@ img {
       .our-services-area{
         margin-top: -35%;
       }
+    }
+
+    .card-image{
+      background-repeat: no-repeat;
+  background-position: 50% 50%;
+  
+ width: 300px;
+  height: 300px;  
+ 
     }
 
     
