@@ -71,30 +71,41 @@
 // })();
 
 $(document).ready(function() {
-  getData();
+
+  if(localStorage.getItem("plantData") == undefined || localStorage.getItem("plantData") == null){
+    $('#loading').show();
+    $('#loading').css({'position': 'fixed'})
+    getData();
+  }else{
+    let plantData = JSON.parse(localStorage.getItem("plantData"));
+    console.log(plantData);
+    $('#loading').hide();
+    $('#loading').css({'position': ''})
+    createImages(plantData);
+   }
+
+   
 
   function getData() {
     $.ajax({
-      url: "https://plantalife-backend.herokuapp.com/getPlantData",
+      url: "http://localhost:5000/getPlantData",
       type: "GET",
       datatype: "json",
       data: {},
       success: function(data) {
         console.log("plant data", data);
         localStorage.plantData = JSON.stringify(data.message);
-        createImages(data);
+        createImages(data.message);
+        $('#loading').hide();
+        $('#loading').css({'position': ''})
       }
     });
   }
 
+  var purchaseItem = [];
   function addToCart(event) {
-    var purchaseItem = [];
-    let plantName =
-      event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[0]
-        .innerText;
-    let plantPrice =
-      event.currentTarget.offsetParent.childNodes[1].childNodes[0].childNodes[1]
-        .innerText;
+    let plantName = event.currentTarget.offsetParent.lastChild.firstChild.firstChild.innerText;
+    let plantPrice = event.currentTarget.offsetParent.lastChild.firstChild.lastChild.innerText;
     let jsonObj = {
       plantName,
       plantPrice
@@ -102,7 +113,8 @@ $(document).ready(function() {
     console.log(plantName, plantPrice);
     var item_count = $("#item-count").text();
     item_count = parseInt(item_count);
-    $("#item-count").text(item_count + 1);
+    item_count = item_count + 1;
+    $("#item-count").text(item_count);
     console.log(item_count);
     purchaseItem.push(jsonObj);
     console.log(purchaseItem);
@@ -113,12 +125,14 @@ $(document).ready(function() {
   function createImages(data) {
     var path = window.location.pathname;
     var page = path.split("/").pop();
-    for (var i = 0; i < data.message.length; i++) {
-      let type = data.message[i].plant_type;
+    console.log(data.length)
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i]);
+      let type = data[i].plant_type;
       type = type.toLowerCase();
       type = type.charAt(0);
       if (type == page.charAt(0)) {
-        console.log(data.message.length);
+        console.log(data.length);
         var div = document.createElement("DIV");
         div.className =
           "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item";
@@ -137,7 +151,7 @@ $(document).ready(function() {
         cardBody.append(cardText);
         var plantImg = document.createElement("IMG");
         plantImg.className = "card-img-top store-img";
-        plantImg.src = `data:image/*;base64,${data.message[i].plant_photo}`;
+        plantImg.src = `data:image/*;base64,${data[i].plant_photo}`;
         // plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
         plantImg.addEventListener("click", clickonImg);
         imgContainer.append(plantImg);
@@ -149,7 +163,7 @@ $(document).ready(function() {
         // italic.addEventListener("click", addToCart);
         span.append(italic);
         var plantName = document.createElement("h5");
-        plantName.innerText = `${data.message[i].plant_name}`;
+        plantName.innerText = `${data[i].plant_name}`;
 
         cardText.append(plantName);
         var addButton = document.createElement("BUTTON");
@@ -162,7 +176,7 @@ $(document).ready(function() {
         sign.innerText = "\u20B9";
         var price = document.createElement("strong");
         price.className = "font-weight-bold";
-        price.innerText = `${data.message[i].plant_price}`;
+        price.innerText = `${data[i].plant_price}`;
         sign.append(price);
         cardText.append(sign);
 
@@ -174,7 +188,7 @@ $(document).ready(function() {
   function clickonImg(event) {
     let plantName = event.path[2].children[1].children[0].children[0].innerText;
     plantName = plantName.toLowerCase().trim();
-    var plantData = JSON.parse(sessionStorage.plantData);
+    var plantData = JSON.parse(localStorage.plantData);
     for (let i = 0; i < plantData.length; i++) {
       str = plantData[i].plant_name.toLowerCase().trim();
       if (str == plantName) {

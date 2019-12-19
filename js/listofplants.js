@@ -2,7 +2,7 @@ $(document).ready(function () {
     var row = "";
     $('#dataTable').DataTable({
         "ajax":{
-            "url": "https://plantalife-backend.herokuapp.com/getPlantData",
+            "url": "http://localhost:5000/getPlantData",
             "type": "GET",
             "datatype": "json",
             "data": {},
@@ -30,28 +30,3 @@ $(document).ready(function () {
    
     
 })
-
-// $(document).ready(function () {
-//         var row = "";
-//         $('#dataTable').DataTable({
-//             "ajax":{
-//                 "url": "https://plantalife-backend.herokuapp.com/getPlantData",
-//                 "type": "GET",
-//                 "datatype": "json",
-//                 "columns": [
-//                     { "message": "plant_type" },
-//                     { "message": "plant_name" },
-//                     { "message": "plant_price" },
-//                     { "message": "plant_status" }
-                   
-//                 ]
-        
-        
-        
-//             }
-//         });
-        
-        
-       
-        
-//     })

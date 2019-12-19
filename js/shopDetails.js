@@ -10,21 +10,28 @@ $(document).ready(function () {
         data[tmp[0]] = tmp[1];
    }
     console.log(data);
-
-    var plantData = JSON.parse( sessionStorage.plantData );
+    var itemCount = JSON.parse(sessionStorage.getItem('itemCount'));
+    if(itemCount == null){
+        itemCount = 0; 
+    }
+    $('#item-count').text(itemCount);
+    var plantData = JSON.parse(localStorage.getItem('plantData'));
     console.log(plantData);
-
+    relatedProducts(plantData);
     for(let i = 0; i < plantData.length; i++){
         if(plantData[i].plant_no == data.plant_id){
             console.log(plantData[i]);
             $('#plantName').text(plantData[i].plant_name);
             $('#plantPrice').text("\u20B9"+" "+plantData[i].plant_price);
+            $('#prod-img').attr("href",`data:image/*;base64,${plantData[i].plant_photo}`);
+            $('#img').attr("src",`data:image/*;base64,${plantData[i].plant_photo}`);
+            $('#type').text(plantData[i].plant_type);
             // $('#moreDesc').text('xyz');
-            relatedProducts(plantData);
+            
         }
     }
 
-    function relatedProducts(PlantData){
+    function relatedProducts(plantData){
         for(let i = 0; i < 4; i++){
             var responseiveDiv = document.createElement("DIV");
             responseiveDiv.className = "col-12 col-sm-6 col-lg-3";
@@ -55,5 +62,28 @@ $(document).ready(function () {
             $('#relatedProd').append(responseiveDiv);
         }
     }
+
+    var addToCart = []
+    $("#addToCart").click(function(event) {
+        let itemCount = JSON.parse(sessionStorage.getItem('itemCount'));
+        let plantData = JSON.parse(sessionStorage.getItem('myPlant'));
+        let plantName = $('#plantName').text();
+        let plantPrice = $('#plantPrice').text();
+        let jsonObj = {
+            plantName,
+            plantPrice
+          };
+          addToCart.push(jsonObj);
+        
+        // if((itemCount && plantData) == null || (itemCount && plantData) == undefined){
+
+        // }
+        // itemCount = itemCount.parseInt(itemCount);
+        // itemCount = itemCount + 1;
+        // $('#item-count').text(itemCount);
+        
+        
+    })
+
 
 })
