@@ -12,9 +12,12 @@ $(document).ready(function () {
     console.log(data);
     var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
     if(myPlant == null){
-    myPlant.length = 0;
-   }
-   $("#item-count").text(myPlant.length);
+        myPlant = 0;
+        $("#item-count").text(myPlant);
+       }else{
+        $("#item-count").text(myPlant.length);
+       }
+
     var plantData = JSON.parse(localStorage.getItem('plantData'));
     console.log(plantData);
     relatedProducts(plantData);
@@ -66,7 +69,7 @@ $(document).ready(function () {
     var addToCart = []
     $("#addToCart").click(function(event) {
         // itemCount = itemCount + 1;
-        $('#item-count').text(itemCount);
+        // $('#item-count').text(itemCount);
         // let plantData = JSON.parse(sessionStorage.getItem('myPlant'));
         
         if(myPlant != null){

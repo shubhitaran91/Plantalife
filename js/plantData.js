@@ -86,9 +86,12 @@ $(document).ready(function() {
 
    var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
    if(myPlant == null){
-    myPlant.length = 0;
+    myPlant = 0;
+    $("#item-count").text(myPlant);
+   }else{
+    $("#item-count").text(myPlant.length);
    }
-   $("#item-count").text(myPlant.length);
+   
 
   function getData() {
     $.ajax({
