@@ -18,6 +18,7 @@ Version: - v1.0
 @import url(css/elegant-icon.css);
 @import url(css/dataTables.bootstrap4.min.css);
 @import url(css/jquery.dataTables.min.css);
+@import url(css/notiflix-1.9.1.min.css);
 /* :: 3.0 Base CSS */
 
 :root {
