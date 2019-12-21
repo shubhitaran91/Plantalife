@@ -29,7 +29,7 @@ $(document).ready(function () {
             $('#prod-img').attr("href",`data:image/*;base64,${plantData[i].plant_photo}`);
             $('#img').attr("src",`data:image/*;base64,${plantData[i].plant_photo}`);
             $('#type').text(plantData[i].plant_type);
-            // $('#moreDesc').text('xyz');
+            $('#moreDesc').text(plantData[i].plant_desc);
             
         }
     }

@@ -1,25 +1,29 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  if(localStorage.getItem("plantData") == undefined || localStorage.getItem("plantData") == null){
-    $('#loading').show();
-    $('#loading').css({'position': 'fixed'})
-    getData();
-  }else{
-    let plantData = JSON.parse(localStorage.getItem("plantData"));
-    console.log(plantData);
-    $('#loading').hide();
-    $('#loading').css({'position': ''})
-    createImages(plantData);
-   }
+  getData();
+  $('#loading').show();
+  $('#loading').css({ 'position': 'fixed' })
 
-   var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
-   if(myPlant == null){
+  // if(localStorage.getItem("plantData") == undefined || localStorage.getItem("plantData") == null){
+  //   $('#loading').show();
+  //   $('#loading').css({'position': 'fixed'})
+
+  // }else{
+  //   let plantData = JSON.parse(localStorage.getItem("plantData"));
+  //   console.log(plantData);
+  //   $('#loading').hide();
+  //   $('#loading').css({'position': ''})
+  //   createImages(plantData);
+  //  }
+
+  var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
+  if (myPlant == null) {
     myPlant = 0;
     $("#item-count").text(myPlant);
-   }else{
+  } else {
     $("#item-count").text(myPlant.length);
-   }
-   
+  }
+
 
   function getData() {
     $.ajax({
@@ -27,16 +31,19 @@ $(document).ready(function() {
       type: "GET",
       datatype: "json",
       data: {},
-      success: function(data) {
+      success: function (data) {
         console.log("plant data", data);
-        localStorage.plantData = JSON.stringify(data.message);
+        // localStorage.plantData = JSON.stringify(data.message);
         createImages(data.message);
         $('#loading').hide();
-        $('#loading').css({'position': ''})
+        $('#loading').css({ 'position': '' })
+      },
+       error: function (e) {
+        $('#loading').hide();
+        $('#loading').css({ 'position': '' });
+        console.log("ERROR : ", e);
       }
     });
-
-   
   }
 
   var purchaseItem = [];
@@ -51,7 +58,7 @@ $(document).ready(function() {
     // var item_count = $("#item-count").text();
     // item_count = parseInt(item_count);
     // item_count = item_count + 1;
-    
+
     // console.log(item_count);
     purchaseItem.push(jsonObj);
     $("#item-count").text(purchaseItem.length);
@@ -92,6 +99,7 @@ $(document).ready(function() {
         plantImg.src = `data:image/*;base64,${data[i].plant_photo}`;
         // plantImg.src = `https://plantalife-backend.herokuapp.com/${data.message[i].plant_photo}`
         plantImg.addEventListener("click", clickonImg);
+        plantImg.myParam = data[i];
         imgContainer.append(plantImg);
         var span = document.createElement("span");
         span.className = "store-item-icon";
@@ -126,19 +134,14 @@ $(document).ready(function() {
   function clickonImg(event) {
     let plantName = event.path[2].children[1].children[0].children[0].innerText;
     plantName = plantName.toLowerCase().trim();
-    var plantData = JSON.parse(localStorage.plantData);
-    for (let i = 0; i < plantData.length; i++) {
-      str = plantData[i].plant_name.toLowerCase().trim();
-      if (str == plantName) {
-        // console.log(plantData[i]);
-        window.location.href =
-          "./shop-details.html?plant_id=" + plantData[i].plant_no;
-      }
-    }
+    var plantData = event.currentTarget.myParam;
+    
+    window.location.href = "./shop-details.html?plant_id=" + plantData.plant_no;
+
   }
 
 
-//  nextPage()
+  //  nextPage()
 });
 
 
