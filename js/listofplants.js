@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var row = "";
     $('#dataTable').DataTable({
         "ajax":{
@@ -11,10 +12,10 @@ $(document).ready(function () {
                 var len = data.message.length;
                 console.log(len)
                 for (var i = 0; i < len; i++) {
-                    row += "<tr><td>" + data.message[i].plant_type + "</td>" + "<td>" + data.message[i].plant_name + "</td>" + "<td>" + data.message[i].plant_price + "</td> " + "<td>" + data.message[i].plant_status + "</td> " + '<td><a href="" class="">Edit</a> / <a href="" onclick="productDelete()">Delete</a></td></tr> ';
+                    row += "<tr><td>" + data.message[i].plant_type + "</td>" + "<td>" + data.message[i].plant_name + "</td>" + "<td>" + data.message[i].plant_price + "</td> " + "<td>" + data.message[i].plant_status + "</td> " + '<td><a >Edit</a> / <a onclick="'+productDelete()+'">Delete</a></td></tr>'
     
                 };
-    
+               
                 $("#tbDetails").append(row);
             }
     
@@ -23,9 +24,9 @@ $(document).ready(function () {
         }
     });
     
-    function productDelete(ctl) {
-        alert("Do you really want to delete")
-        $(ctl).parents("tr").remove();
+    function productDelete() {
+        console.log("Do you really want to delete")
+        // $(ctl).parents("tr").remove();
       }
    
     
