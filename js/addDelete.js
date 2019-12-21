@@ -1,4 +1,4 @@
-$("#btnSubmit").click(function(event) {
+$("#modalButton").click(function(event) {
   event.preventDefault();
 
   var form = $("#fileUploadForm")[0];
@@ -20,12 +20,8 @@ $("#btnSubmit").click(function(event) {
     processData: false,
     contentType: false,
     cache: false,
-    success: function(data) {
-      alert(data.message);
-
-      //location.reload();
-      // window.location.href = "/listofplants.html";
-    },
+    success: 
+      $("#buttonAlert").addClass('show') ,
     error: function(e) {
       console.log("ERROR : ", e);
       $('#loading').css({'position': ''})
