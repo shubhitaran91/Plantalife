@@ -41,7 +41,7 @@ $(document).ready(function () {
         $('#loading').hide();
         $('#loading').css({ 'position': '' });
         console.log("ERROR : ", e);
-        Notiflix.Notify.Failure("ERROR : " + e);
+        Notiflix.Notify.Failure("Some Error Occured");
       }
     });
   });
