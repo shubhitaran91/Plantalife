@@ -43,11 +43,17 @@ $(document).ready(function () {
       datatype: "json",
       data: JSON.stringify(data),
       success: function (data) {
+        data = data.message;
         console.log("plant data", data);
-        // localStorage.plantData = JSON.stringify(data.message);
-        createImages(data.message);
+        if(data == 'No Data Found'){
+          alert(data);
+        }else{
+          createImages(data.message);
+        }
+                // localStorage.plantData = JSON.stringify(data.message);
+        
         $('#loading').hide();
-        $('#loading').css({ 'position': '' })
+        $('#loading').css({ 'position': '' });
       },
        error: function (e) {
         $('#loading').hide();
