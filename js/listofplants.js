@@ -1,10 +1,12 @@
 $(document).ready(function () {
+
+    
     
     var row = "";
     $('#dataTable').DataTable({
         "ajax":{
             "url": "https://plantalife-backend.herokuapp.com/getPlantData",
-            "type": "GET",
+            "type": "POST",
             "datatype": "json",
             "data": {},
             success: function (data) {

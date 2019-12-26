@@ -283,7 +283,7 @@
                         <!-- Single Benefits Area -->
                         <div class="col-12 col-sm-3">
                             <div class="single-benefits-area">
-                                <a href="indoor.html"><img src="img/core-img/4.png" alt=""></a>
+                                <a id="indoor" onclick="requestInfo(this.id)"><img src="img/core-img/4.png" alt=""></a>
                                 <h5 style="text-align: center">Indoor Plants</h5>
                                 <p></p>
                             </div>
@@ -292,7 +292,7 @@
                         <!-- Single Benefits Area -->
                         <div class="col-12 col-sm-3">
                             <div class="single-benefits-area">
-                                <a href="outdoor.html"> <img src="img/core-img/b2.png" alt=""></a>
+                                <a id="outdoor" onclick="requestInfo(this.id)"> <img src="img/core-img/b2.png" alt=""></a>
                                 <h5 style="text-align: center">Outdoor Plants</h5>
                                 <p></p>
                             </div>
@@ -301,7 +301,7 @@
                         <!-- Single Benefits Area -->
                         <div class="col-12 col-sm-3">
                             <div class="single-benefits-area">
-                                <a href="homedecor.html"><img src="img/core-img/5.png" alt=""></a>
+                                <a id="homedecor" onclick="requestInfo(this.id)"><img src="img/core-img/5.png" alt=""></a>
                                 <h5 style="text-align: center">Home Decor</h5>
                                 <p></p>
                             </div>
@@ -310,7 +310,7 @@
                         <!-- Single Benefits Area -->
                         <div class="col-12 col-sm-3">
                             <div class="single-benefits-area">
-                                <a href="grass.html"><img src="img/core-img/5.png" alt=""></a>
+                                <a id="grass" onclick="requestInfo(this.id)"><img src="img/core-img/5.png" alt=""></a>
                                 <h5 style="text-align: center">Grass/Seeds</h5>
                                 <p></p>
                             </div>
@@ -641,6 +641,12 @@
     <script src="js/active.js"></script>
     <script src="js/login.js"></script>
     <script src="js/register.js"></script>
+
+    <script type="text/javascript">
+        function requestInfo(clicked){
+            window.location.href = `./${clicked}.html?plant_type=${clicked}`;
+        }
+    </script>
 </body>
 
 </html>

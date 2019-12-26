@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    var url = document.location.href;
+    var params = url.split('?')[1].split('&');
+    var data = {}, tmp;
+    var l = params.length;
+    for (var i = 0; i < l; i++) {
+        tmp = params[i].split('=');
+        tmp[1] = tmp[1].replace("%20", " ")
+        data[tmp[0]] = tmp[1];
+   }
+  console.log(data);
+
   getData();
   $('#loading').show();
   $('#loading').css({ 'position': 'fixed' })
@@ -28,9 +39,9 @@ $(document).ready(function () {
   function getData() {
     $.ajax({
       url: "https://plantalife-backend.herokuapp.com/getPlantData",
-      type: "GET",
+      type: "POST",
       datatype: "json",
-      data: {},
+      data: JSON.stringify(data),
       success: function (data) {
         console.log("plant data", data);
         // localStorage.plantData = JSON.stringify(data.message);
