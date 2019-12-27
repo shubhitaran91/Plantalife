@@ -29,9 +29,7 @@ $(document).ready(function () {
 
   var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
   if (myPlant == null) {
-    myPlant = 0;
-    $("#item-count").text(myPlant);
-  } else {
+     myPlant = [];
     $("#item-count").text(myPlant.length);
   }
 
@@ -41,14 +39,14 @@ $(document).ready(function () {
       url: "https://plantalife-backend.herokuapp.com/getPlantData",
       type: "POST",
       datatype: "json",
-      data: JSON.stringify(data),
+      data: data,
       success: function (data) {
         data = data.message;
         console.log("plant data", data);
         if(data == 'No Data Found'){
           alert(data);
         }else{
-          createImages(data.message);
+          createImages(data);
         }
                 // localStorage.plantData = JSON.stringify(data.message);
         
@@ -63,7 +61,7 @@ $(document).ready(function () {
     });
   }
 
-  var purchaseItem = [];
+  // var purchaseItem = [];
   function addToCart(event) {
     let plantName = event.currentTarget.offsetParent.lastChild.firstChild.firstChild.innerText;
     let plantPrice = event.currentTarget.offsetParent.lastChild.firstChild.lastChild.innerText;
@@ -77,27 +75,24 @@ $(document).ready(function () {
     // item_count = item_count + 1;
 
     // console.log(item_count);
-    purchaseItem.push(jsonObj);
-    $("#item-count").text(purchaseItem.length);
+    myPlant.push(jsonObj);
+    $("#item-count").text(myPlant.length);
     //console.log(purchaseItem);
-    sessionStorage.setItem("myPlant", JSON.stringify(purchaseItem));
+    sessionStorage.setItem("myPlant", JSON.stringify(myPlant));
     // sessionStorage.setItem("itemCount", item_count);
   }
 
   function createImages(data) {
-    var path = window.location.pathname;
-    var page = path.split("/").pop();
-    console.log(data.length)
+    // var path = window.location.pathname;
+    // var page = path.split("/").pop();
+    // console.log(data.length)
     for (var i = 0; i < data.length; i++) {
-      console.log(data[i]);
-      let type = data[i].plant_type;
-      type = type.toLowerCase();
-      type = type.charAt(0);
-      if (type == page.charAt(0)) {
-        console.log(data.length);
+      // console.log(data[i]);
+      // let type = data[i].plant_type;
+      // type = type.toLowerCase();
+      // type = type.charAt(0);
         var div = document.createElement("DIV");
-        div.className =
-          "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item";
+        div.className = "col-12 col-md-4 col-xs-6 col-sm-6 col-lg-4 my-3 store-item";
         var cardDiv = document.createElement("DIV");
         cardDiv.className = "card card-image";
         div.append(cardDiv);
@@ -108,8 +103,7 @@ $(document).ready(function () {
         cardBody.className = "card-body";
         cardDiv.append(cardBody);
         var cardText = document.createElement("DIV");
-        cardText.className =
-          "card-text d-flex justify-content-between text-capitalize";
+        cardText.className ="card-text d-flex justify-content-between text-capitalize";
         cardBody.append(cardText);
         var plantImg = document.createElement("IMG");
         plantImg.className = "card-img-top store-img";
@@ -144,7 +138,6 @@ $(document).ready(function () {
         cardText.append(sign);
 
         $("#addCard").append(div);
-      }
     }
   }
 
@@ -152,8 +145,10 @@ $(document).ready(function () {
     let plantName = event.path[2].children[1].children[0].children[0].innerText;
     plantName = plantName.toLowerCase().trim();
     var plantData = event.currentTarget.myParam;
+    // plantData = JSON.stringify(plantData);
+    // console.log(plantData);
     
-    window.location.href = "./shop-details.html?plant_id=" + plantData.plant_no;
+    window.location.href = "./shop-details.html?plant_no="+plantData.plant_no;
 
   }
 
