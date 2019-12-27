@@ -30,8 +30,8 @@ $(document).ready(function () {
   var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
   if (myPlant == null) {
      myPlant = [];
-    $("#item-count").text(myPlant.length);
   }
+  $("#item-count").text(myPlant.length);
 
 
   function getData() {

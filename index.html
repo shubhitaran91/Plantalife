@@ -644,7 +644,8 @@
 
     <script type="text/javascript">
         function requestInfo(clicked){
-            window.location.href = `./${clicked}.html?plant_type=${clicked}`;
+            let pageName = clicked.toLowerCase()
+            window.location.href = `./${pageName}.html?plant_type=${clicked}`;
         }
     </script>
 </body>
