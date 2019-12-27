@@ -36,13 +36,15 @@ $(document).ready(function () {
       })
   }
 
-//   $(".action").on("click", function(event){
-//     // let tbrow = $(document).find('tr');
-//     // console.log($(event.currentTarget).index() + 1);
-//     console.log($(this).index());
-//     // $(this).closest("tr").remove();
-//     // parentNode.rowIndex
-// });
+  $(".icon_close").on("click", function(event){
+     let rowIndex = event.currentTarget.parentNode.parentNode.parentNode.rowIndex;
+     myArray.splice(rowIndex-1,1);
+     console.log(myArray);
+     sessionStorage.setItem("myPlant", JSON.stringify(myArray));
+     location.reload();
+    // $(this).closest("tr").remove();
+    // parentNode.rowIndex
+});
 
 // $('#tbDetails').find('tr').click( function(){
 //   console.log('You clicked row '+ ($(this).index()+1) );
