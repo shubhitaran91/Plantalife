@@ -10,8 +10,8 @@ $(document).ready(function () {
         data[tmp[0]] = tmp[1];
    }
   console.log(data);
-
   getData();
+  
   $('#loading').show();
   $('#loading').css({ 'position': 'fixed' })
 
@@ -47,9 +47,7 @@ $(document).ready(function () {
           alert(data);
         }else{
           createImages(data);
-        }
-                // localStorage.plantData = JSON.stringify(data.message);
-        
+        }        
         $('#loading').hide();
         $('#loading').css({ 'position': '' });
       },

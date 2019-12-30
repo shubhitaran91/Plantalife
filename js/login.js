@@ -1,7 +1,13 @@
-$(document).ready(function() {  
+$(document).ready(function() {
+  // sessionStorage.setItem('loginStatus', false);
   $("#login").click(function(e) {
     e.preventDefault();
     $("#loginModal").show();
+    if(localStorage.email != null || localStorage.pass !=null){
+      $("#email").val(localStorage.email);
+      $("#password").val(localStorage.pass);
+
+    }
   });
 
   $("#closeModal").click(function() {
@@ -27,6 +33,7 @@ $(document).ready(function() {
       data: loginData,
 
       success: function(data) {
+        // sessionStorage.setItem('loginStatus', true);
         alert(data.message);
       },
       error: function(e) {
