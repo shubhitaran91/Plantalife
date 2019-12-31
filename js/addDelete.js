@@ -32,7 +32,11 @@ $(document).ready(function () {
         $('#loading').css({ 'position': '' });
         // alert(data.message);
         // $("#buttonAlert").addClass('show') 
-        Notiflix.Notify.Success(data.message);
+        if(data == "error"){
+          Notiflix.Report.Failure( 'Oops Something went wrong', 'Please Try Again', 'OK' );
+      }else{
+          Notiflix.Report.Success( 'Item Added Successfully', 'Click OK To Continue' );
+      }
 
         //location.reload();
         //  window.location.href = "./listofplants.html"; 
@@ -41,7 +45,7 @@ $(document).ready(function () {
         $('#loading').hide();
         $('#loading').css({ 'position': '' });
         console.log("ERROR : ", e);
-        Notiflix.Notify.Failure("Some Error Occured");
+        Notiflix.Report.Warning( 'Network Issue', 'Try Again Later', 'OK' ); 
       }
     });
   });
