@@ -1,14 +1,17 @@
 
 $(document).ready(function () {
 
+    $('#loading').hide();
+    $('#loading').css({ 'position': '' });
+
     var myArray = JSON.parse(sessionStorage.getItem('myPlant'));
-    console.log("myArray",myArray)
-    
+    console.log("myArray", myArray)
+
     summary();
-    
-    function summary(){
+
+    function summary() {
         var totalPrice = 0;
-        for(let i = 0; i < myArray.length; i++){
+        for (let i = 0; i < myArray.length; i++) {
             let prodDiv = document.createElement('div');
             prodDiv.className = "single-products d-flex justify-content-between align-items-center"
             let plantName = document.createElement('p');
@@ -26,41 +29,54 @@ $(document).ready(function () {
             totalPrice += purchasePrice;
         }
         console.log(totalPrice);
-        $('#subtotal').text('\u20B9'+totalPrice+'.00');
+        $('#subtotal').text('\u20B9' + totalPrice + '.00');
         let shippingCharges = 10;
-        $('#shipping').text('\u20B9'+shippingCharges+'.00');
+        $('#shipping').text('\u20B9' + shippingCharges + '.00');
         let totalCharges = totalPrice + shippingCharges
-        $('#total').text('\u20B9'+totalCharges+'.00')
+        $('#total').text('\u20B9' + totalCharges + '.00')
 
-        $('#placeOrder').click(function(){
-            placeOrder(totalCharges);
-            alert("Order has been placed...... Please Contact Person given in a mail")
-        
+
+        $('#placeOrder').click(function () {
+            $('#loading').show();
+            $('#loading').css({ 'position': 'fixed' })
+
+            var dataTosend = {
+                fname: $('#fname').val(),
+                lname: $('#lname').val(),
+                email: $('#email').val(),
+                mobile: $('#mobile').val(),
+                address: $('#address').val(),
+                city: $('#city').val(),
+                state: $('#state').val(),
+                zip: $('#zip').val(),
+                notes: $('#notes').val(),
+                products: myArray,
+                subtotal: totalPrice,
+                shipping: shippingCharges,
+                totalAmt: totalCharges,
+            }
+
+            console.log(dataTosend);
+
+            $.ajax({
+                url: "https://plantalife-backend.herokuapp.com/checkout",
+                type: "POST",
+                datatype: "json",
+                data: dataTosend,
+                success: function (response) {
+                    response = response.message;
+                    console.log("response", response);
+                    alert(response)
+                    $('#loading').hide();
+                    $('#loading').css({ 'position': '' });
+                },
+                error: function (e) {
+                    $('#loading').hide();
+                    $('#loading').css({ 'position': '' });
+                    console.log("ERROR : ", e);
+                }
+            });
         })
 
-       
     }
-
-    function placeOrder(totalCharges){
-
-        var dataTosend = {
-         fname : $('#first_name').val(),
-         lname : $('#last_name').val(),
-         emailId : $('#email_address').val(),
-         phone : $('#phone_number').val(),
-         address : $('#address').val(),
-         city : $('#city').val(),
-         state : $('#state').val(),
-         zip : $('#postcode').val(),
-         notes : $('#order_notes').val(),
-         plantInfo : myArray,
-         totalAmt : totalCharges,
-        }
-
-        console.log(dataTosend);
-
-    }
-
-  
-
 });

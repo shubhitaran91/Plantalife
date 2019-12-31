@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     var url = document.location.href;
     var params = url.split('?')[1].split('&');
+    // var uri_dec = decodeURIComponent(params);
+    // console.log(JSON.stringify(uri_dec));
     var data = {}, tmp;
     var l = params.length;
     for (var i = 0; i < l; i++) {
@@ -10,29 +12,54 @@ $(document).ready(function () {
         data[tmp[0]] = tmp[1];
    }
     console.log(data);
+
     var myPlant = JSON.parse(sessionStorage.getItem('myPlant'));
     if(myPlant == null){
-        myPlant = 0;
-        $("#item-count").text(myPlant);
-       }else{
-        $("#item-count").text(myPlant.length);
+        myPlant = [];
        }
+       $("#item-count").text(myPlant.length);
 
-    var plantData = JSON.parse(localStorage.getItem('plantData'));
-    console.log(plantData);
-    relatedProducts(plantData);
-    for(let i = 0; i < plantData.length; i++){
-        if(plantData[i].plant_no == data.plant_id){
-            console.log(plantData[i]);
-            $('#plantName').text(plantData[i].plant_name);
-            $('#plantPrice').text("\u20B9"+" "+plantData[i].plant_price);
-            $('#prod-img').attr("href",`data:image/*;base64,${plantData[i].plant_photo}`);
-            $('#img').attr("src",`data:image/*;base64,${plantData[i].plant_photo}`);
-            $('#type').text(plantData[i].plant_type);
-            // $('#moreDesc').text('xyz');
-            
+    
+
+  $('#loading').show();
+  $('#loading').css({ 'position': 'fixed' })
+  getData();
+
+  function getData() {
+    $.ajax({
+      url: "https://plantalife-backend.herokuapp.com/shopDetails",
+      type: "POST",
+      datatype: "json",
+      data: data,
+      success: function (data) {
+        data = data.message;
+        console.log("plant data", data);
+        if(data == 'No Data Found'){
+           alert(data);
+        }else{
+            $('#plantName').text(data.plant_name);
+            $('#plantPrice').text("\u20B9"+" "+data.plant_price);
+            $('#prod-img').attr("href",`data:image/*;base64,${data.plant_photo}`);
+            $('#img').attr("src",`data:image/*;base64,${data.plant_photo}`);
+            $('#type').text(data.plant_type);
+            $('#moreDesc').text(data.plant_desc);
         }
-    }
+                // localStorage.plantData = JSON.stringify(data.message);
+        
+        $('#loading').hide();
+        $('#loading').css({ 'position': '' });
+      },
+       error: function (e) {
+        $('#loading').hide();
+        $('#loading').css({ 'position': '' });
+        console.log("ERROR : ", e);
+      }
+    });
+  }
+
+    // var plantData = JSON.parse(localStorage.getItem('plantData'));
+    // console.log(plantData);
+    // relatedProducts(plantData);
 
     function relatedProducts(plantData){
         for(let i = 0; i < 4; i++){
@@ -66,24 +93,23 @@ $(document).ready(function () {
         }
     }
 
-    var addToCart = []
+
     $("#addToCart").click(function(event) {
         // itemCount = itemCount + 1;
         // $('#item-count').text(itemCount);
         // let plantData = JSON.parse(sessionStorage.getItem('myPlant'));
         
-        if(myPlant != null){
-            addToCart = myPlant;
-        }
         let plantName = $('#plantName').text();
         let plantPrice = $('#plantPrice').text();
+
         let jsonObj = {
             plantName,
             plantPrice
           };
-          addToCart.push(jsonObj);
-          $("#item-count").text(addToCart.length);
-        sessionStorage.setItem("myPlant", JSON.stringify(addToCart));
+
+          myPlant.push(jsonObj);
+          $("#item-count").text(myPlant.length);
+         sessionStorage.setItem("myPlant", JSON.stringify(myPlant));
     })
 
 

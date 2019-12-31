@@ -32,16 +32,16 @@ $(document).ready(function () {
         $('#loading').css({ 'position': '' });
         // alert(data.message);
         // $("#buttonAlert").addClass('show') 
-        Notiflix.Notify.Success("Successfully Added Plant");
+        Notiflix.Notify.Success(data.message);
 
         //location.reload();
-        //  window.location.href = "./listofplants.html";
+        //  window.location.href = "./listofplants.html"; 
       },
       error: function (e) {
         $('#loading').hide();
         $('#loading').css({ 'position': '' });
         console.log("ERROR : ", e);
-        Notiflix.Notify.Failure("Please Fill The Details");
+        Notiflix.Notify.Failure("Some Error Occured");
       }
     });
   });
