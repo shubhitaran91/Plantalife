@@ -44,7 +44,8 @@ $(document).ready(function () {
         data = data.message;
         console.log("plant data", data);
         if(data == 'No Data Found'){
-          alert(data);
+          // alert(data);
+          Notiflix.Report.Info( 'Data Not Found', 'Please Try Again', 'OK' ); 
         }else{
           createImages(data);
         }        
@@ -55,6 +56,7 @@ $(document).ready(function () {
         $('#loading').hide();
         $('#loading').css({ 'position': '' });
         console.log("ERROR : ", e);
+        Notiflix.Report.Warning( 'Network Issue', 'Please Check Your Connection', 'OK' ); 
       }
     });
   }

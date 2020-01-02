@@ -65,8 +65,11 @@ $(document).ready(function () {
                 data: dataTosend,
                 success: function (response) {
                     response = response.message;
-                    console.log("response", response);
-                    alert(response)
+                    if(response == "error"){
+                        Notiflix.Report.Failure( 'Order Fail', 'Please Try Again', 'OK' );
+                    }else{
+                        Notiflix.Report.Success( 'Order Successfull', 'Thanks Shopping with us.  Will notify you as your Order will process', 'Click OK To Continue Shopping' );
+                    }
                     $('#loading').hide();
                     $('#loading').css({ 'position': '' });
                 },
@@ -74,6 +77,7 @@ $(document).ready(function () {
                     $('#loading').hide();
                     $('#loading').css({ 'position': '' });
                     console.log("ERROR : ", e);
+                    Notiflix.Report.Warning( 'Network Issue', 'Try Again Later', 'OK' ); 
                 }
             });
         })
