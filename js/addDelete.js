@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   $("#btnSubmit").click(function (event) {
     event.preventDefault();
-
+    
     var form = $("#fileUploadForm")[0];
 
     var data = new FormData(form);
@@ -20,7 +20,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       enctype: "multipart/form-data",
-      url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
+      url: "http://localhost:5000/uploadPlantData",
 
       data: data,
       processData: false,
@@ -49,5 +49,7 @@ $(document).ready(function () {
       }
     });
   });
+
+ 
 
 });
