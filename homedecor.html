@@ -16,7 +16,10 @@
     <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="css/plantalife/homedecor.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/plantalife/plantdata.css">
+    <link rel="stylesheet" type="text/css" href="./css/plantalife/loader.css">
 
 </head>
 
@@ -27,6 +30,10 @@
         <div class="preloader-img">
             <img src="img/core-img/leaf.png" alt="">
         </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <img class="loading-image" id="loading-image" src="img/core-img/leaf.png" alt="">
     </div>
 
     <!-- ##### Header Area Start ##### -->
@@ -44,8 +51,8 @@
                                     title="plantalifee@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>
                                     <span>Email:
                                         plantalifee@gmail.com</span></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="7798098765"><i
-                                        class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: 7798098765</span></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="7790901214"><i
+                                        class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: 7790901214</span></a>
                             </div>
 
                             <!-- Top Header Content -->
@@ -59,7 +66,7 @@
                                     <!-- <p class="mb-0 text-capitalize"><span id="item-count">0</span> items - $<span class="item-total"></span></p> -->
                                 </div>
                                 <!-- Login -->
-                                <div class="login">
+                                <!-- <div class="login">
                                     <a href="#" id="login"><i class="fa fa-user" aria-hidden="true"></i>
                                         <span>Login</span></a>
                                     <div id="loginModal" class="modal">
@@ -135,7 +142,8 @@
                                         </form>
                                     </div>
 
-                                </div>
+                                </div> -->
+
 
 
                             </div>
@@ -252,8 +260,10 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Home Decor</li>
+                            <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">homedecor
+
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -272,174 +282,36 @@
     <!-- ##### Breadcrumb Area End ##### -->
 
     <!-- ##### Shop Area Start ##### -->
-    <!-- <section class="shop-page section-padding-0-100">
+    <section class="shop-page section-padding-0-100">
         <div class="container">
 
-          <div class="row">
-        
-            <div class="col-md-12 col-lg-12">
-              <div class="shop-products-area">
-                
-                  <div class="row" id="addCard">
-                      
-                         
-                      
-                     
-
-                  </div>
-                   
-                  <!-- Pagination -->
-    <!-- <nav aria-label="Page navigation">
-                    <ul class="pagination" id="demo">
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                  </nav>
-                
-              </div>
-              </div>
-            </div>
-          </div>  
-    </section>  -->
-
-    <!--#########toggle start-->
-    <section class="plantalife-portfolio-area">
-        <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="plantalife-portfolio-filter">
-                        <div class="portfolio-filter">
-                            <button class="btn active" data-filter="*">All</button>
-                            <button class="btn" data-filter=".design">Artificial Plants</button>
-                            <button class="btn" data-filter=".garden">Pots</button>
-                            <button class="btn" data-filter=".home-design">Artificial Grass</button>
-                            <button class="btn" data-filter=".office-design">Decoration Items</button>
+
+                <div class="col-md-12 col-lg-12">
+                    <div class="shop-products-area">
+
+                        <div class="row" id="addCard">
+
+                            <!-- <button class="store-item-icon">Add To Card</button>  -->
+
+
+
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row plantalife-portfolio" style="position: relative; height: 420px;">
 
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item design home-design wow fadeInUp"
-                    data-wow-delay="100ms"
-                    style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp; position: absolute; left: 0%; top: 0px; display: none;">
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination" id="pagin">
+                                <!-- <li class="page-item"><a class="page-link" onclick="firstPage();">1</a></li>
+                      <li class="page-item"><a class="page-link" onclick="nextPage();">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li> -->
+                            </ul>
+                        </nav>
 
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/16.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/16.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 1">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp" data-wow-delay="200ms"
-                    style="visibility: visible; animation-delay: 200ms; animation-name: fadeInUp; position: absolute; left: 0%; top: 0px; display: none;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/17.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/17.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 2">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden design wow fadeInUp"
-                    data-wow-delay="300ms"
-                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp; position: absolute; left: 24.9608%; top: 0px; display: none;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/18.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/18.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 3">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden office-design wow fadeInUp"
-                    data-wow-delay="400ms"
-                    style="visibility: visible; animation-delay: 400ms; animation-name: fadeInUp; position: absolute; left: 0%; top: 0px;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/19.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/19.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 4">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item design office-design wow fadeInUp"
-                    data-wow-delay="100ms"
-                    style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp; position: absolute; left: 24.9608%; top: 0px;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/20.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/20.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 5">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp" data-wow-delay="200ms"
-                    style="visibility: visible; animation-delay: 200ms; animation-name: fadeInUp; position: absolute; left: 74.9608%; top: 0px; display: none;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/21.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/21.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 6">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6 single_portfolio_item home-design wow fadeInUp" data-wow-delay="300ms"
-                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp; position: absolute; left: 24.9608%; top: 0px; display: none;">
-
-                    <div class="portfolio-thumbnail bg-img" style="background-image: url(img/bg-img/22.jpg);"></div>
-
-                    <div class="portfolio-hover-overlay">
-                        <a href="img/bg-img/22.jpg"
-                            class="portfolio-img d-flex align-items-center justify-content-center" title="Portfolio 7">
-                            <div class="port-hover-text">
-                                <h3>Minimal Flower Store</h3>
-                                <h5>Office Plants</h5>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--#######toggle End-->
     <!-- ##### Shop Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
@@ -563,6 +435,7 @@
     <script src="js/active.js"></script>
     <script src="js/plantData.js"></script>
     <script src="js/login.js"></script>
+
 </body>
 
 </html>
