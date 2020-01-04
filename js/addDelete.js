@@ -1,13 +1,13 @@
 
 
 $(document).ready(function () {
-
+  
   $('#loading').hide();
   $('#loading').css({ 'position': '' })
 
   $("#btnSubmit").click(function (event) {
     event.preventDefault();
-
+    
     var form = $("#fileUploadForm")[0];
 
     var data = new FormData(form);
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $('#loading').show();
     $('#loading').css({ 'position': 'fixed' });
-
+    
     $.ajax({
       type: "POST",
       enctype: "multipart/form-data",
@@ -48,6 +48,8 @@ $(document).ready(function () {
         Notiflix.Report.Warning( 'Network Issue', 'Try Again Later', 'OK' ); 
       }
     });
+  
   });
-
+  
+ 
 });

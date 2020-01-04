@@ -41,7 +41,7 @@ $(document).ready(function()
         type: "POST",
         datatype: "json",
         async: false,
-        url: "http://localhost:5000/getPlantData",
+        url: "https://plantalife-backend.herokuapp.com/getPlantData",
   
         data: data,
         
