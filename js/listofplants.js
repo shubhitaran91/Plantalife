@@ -134,7 +134,7 @@ $(document).ready(function()
 			  console.log("plant data", data);
 			  if(data == 'success'){
 				
-				Notiflix.Report.success( 'Data Removed Succesfully', 'OK' ); 
+				Notiflix.Report.success('Data Removed Succesfully', 'click OK to continue' ); 
 			  }       
 			  $('#loading').hide();
 			  $('#loading').css({ 'position': '' });
