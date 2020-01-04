@@ -125,7 +125,7 @@ $(document).ready(function()
 		var row_id = tbl_row.attr('row_id');
 		console.log("id",row_id)
 		$.ajax({
-			url: "http://localhost:5000/removePlantData",
+			url: "https://plantalife-backend.herokuapp.com/removePlantData",
 			type: "POST",
 			datatype: "json",
 			data: {"plant_no":row_id},
