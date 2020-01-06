@@ -27,7 +27,7 @@ $(document).ready(function () {
 
   function getData() {
     $.ajax({
-      url: "https://plantalife-backend.herokuapp.com/shopDetails",
+      url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/shopDetails",
       type: "POST",
       datatype: "json",
       data: data,

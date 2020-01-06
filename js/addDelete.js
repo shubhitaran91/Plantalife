@@ -20,7 +20,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       enctype: "multipart/form-data",
-      url: "https://plantalife-backend.herokuapp.com/uploadPlantData",
+      url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/uploadPlantData",
 
       data: data,
       processData: false,

@@ -59,7 +59,7 @@ $(document).ready(function () {
             console.log(dataTosend);
 
             $.ajax({
-                url: "https://plantalife-backend.herokuapp.com/checkout",
+                url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/checkout",
                 type: "POST",
                 datatype: "json",
                 data: dataTosend,

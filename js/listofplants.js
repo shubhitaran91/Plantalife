@@ -39,7 +39,7 @@ $(document).ready(function()
     $.ajax({
         type: "GET",
         async: false,
-        url: "https://plantalife-backend.herokuapp.com/getAllPlantData",        
+        url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/getAllPlantData",        
         success: myCallback,
         error: function (e) {
           
@@ -125,7 +125,7 @@ $(document).ready(function()
 		var row_id = tbl_row.attr('row_id');
 		console.log("id",row_id)
 		$.ajax({
-			url: "https://plantalife-backend.herokuapp.com/removePlantData",
+			url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/removePlantData",
 			type: "POST",
 			datatype: "json",
 			data: {"plant_no":row_id},
