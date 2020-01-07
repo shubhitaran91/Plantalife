@@ -28,7 +28,7 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       enctype: JSON,
-      url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/login",
+      url: "http://ec2-13-232-51-230.ap-south-1.compute.amazonaws.com:5000/login",
 
       data: loginData,
 

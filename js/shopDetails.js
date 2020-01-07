@@ -27,7 +27,7 @@ $(document).ready(function () {
 
   function getData() {
     $.ajax({
-      url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/shopDetails",
+      url: "http://ec2-13-232-51-230.ap-south-1.compute.amazonaws.com:5000/shopDetails",
       type: "POST",
       datatype: "json",
       data: data,

@@ -1,45 +1,11 @@
-// $(document).ready(function () {
 
-    
-    
-//     var row = "";
-//     $('#dataTable').DataTable({
-//         "ajax":{
-//             "url": "https://plantalife-backend.herokuapp.com/getPlantData",
-//             "type": "POST",
-//             "datatype": "json",
-//             "data": {},
-//             success: function (data) {
-//                 console.log(data.message);
-//                 var len = data.message.length;
-//                 console.log(len)
-//                 for (var i = 0; i < len; i++) {
-//                     row += "<tr><td>" + data.message[i].plant_type + "</td>" + "<td>" + data.message[i].plant_name + "</td>" + "<td>" + data.message[i].plant_price + "</td> " + "<td>" + data.message[i].plant_status + "</td> " + '<td><button>Edit</button> / <button onclick="'+productDelete(data.message[i].plant_no)+'">Delete</button></td></tr>'
-    
-//                 };
-               
-//                 $("#tbDetails").append(row);
-//             }
-    
-    
-    
-//         }
-//     });
-    
-//     function productDelete(plant) {
-//         console.log("Do you really want to delete")
-//         // $(ctl).parents("tr").remove();
-//       }
-   
-    
-// })
 
 $(document).ready(function()
 {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/getAllPlantData",        
+        url: "http://ec2-13-232-51-230.ap-south-1.compute.amazonaws.com:5000/getAllPlantData",        
         success: myCallback,
         error: function (e) {
           
@@ -125,7 +91,7 @@ $(document).ready(function()
 		var row_id = tbl_row.attr('row_id');
 		console.log("id",row_id)
 		$.ajax({
-			url: "http://ec2-13-233-24-192.ap-south-1.compute.amazonaws.com:5000/removePlantData",
+			url: "http://ec2-13-232-51-230.ap-south-1.compute.amazonaws.com:5000/removePlantData",
 			type: "POST",
 			datatype: "json",
 			data: {"plant_no":row_id},
