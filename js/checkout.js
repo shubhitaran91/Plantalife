@@ -80,6 +80,7 @@ $(document).ready(function () {
                     Notiflix.Report.Warning( 'Network Issue', 'Try Again Later', 'OK' ); 
                 }
             });
+             myArray = JSON.parse(sessionStorage.clear());
         })
 
     }
