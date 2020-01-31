@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
 
+   
+
     $('#loading').hide();
     $('#loading').css({ 'position': '' });
 
@@ -13,7 +15,7 @@ $(document).ready(function () {
         var totalPrice = 0;
         for (let i = 0; i < myArray.length; i++) {
             let prodDiv = document.createElement('div');
-            prodDiv.className = "single-products d-flex justify-content-between align-items-center"
+            prodDiv.className = "   "
             let plantName = document.createElement('p');
             plantName.innerText = myArray[i].plantName;
             let plantPrice = document.createElement('h5');
